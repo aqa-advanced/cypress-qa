@@ -30,6 +30,10 @@ class HeaderMenu {
     getSignUpBtnElement(){
         this.elements.signUpBtn().should('be.visible');
     }
+
+    clickOnSignupBtn(){
+        this.elements.signUpBtn().click();
+    }
 }
 
 export const headerMenu = new HeaderMenu()
