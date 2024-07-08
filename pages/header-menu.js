@@ -34,6 +34,10 @@ class HeaderMenu {
     clickOnSignupBtn(){
         this.elements.signUpBtn().click();
     }
+
+    clickOnSignInBtn(){
+        this.elements.signInBtn().click();
+    }
 }
 
 export const headerMenu = new HeaderMenu()

@@ -1,5 +1,9 @@
 import { headerMenu } from '../../pages/header-menu';
 import {footerMenu} from "../../pages/footer-menu";
+import {registrationFormModal} from "../../pages/registration-form";
+import {personalArea} from "../../pages/personal-area";
+import {getRegistrationData} from "../fixtures/registrationData";
+import {loginFormModal} from "../../pages/login-form";
 
 
 describe('Check header and footer elements', () => {
@@ -14,4 +18,34 @@ describe('Check header and footer elements', () => {
     footerMenu.getContactsLink();
     footerMenu.getEmailLink();
   })
-})
+
+  describe('Check registration form -> positive test', () => {
+    it('', () => {
+      cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/')
+      headerMenu.clickOnSignupBtn();
+      const registrationData = getRegistrationData();
+      registrationFormModal.fillRegistrationForm(registrationData);
+      registrationFormModal.clickOnRegisterBtn();
+      personalArea.profileBtnIsVisible();
+      personalArea.clickOnLogOut();
+      headerMenu.clickOnSignInBtn();
+      loginFormModal.logIn(registrationData);
+    })
+
+    describe('Registration form -> check validation errors', () => {
+      it('', () => {
+        cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/')
+        headerMenu.clickOnSignupBtn();
+        registrationFormModal.checkRegistrationBtnIsDisabled();
+        const registrationData = getRegistrationData();
+        registrationFormModal.checkNameField(registrationData);
+        registrationFormModal.checkLastNameField(registrationData);
+        registrationFormModal.checkEmailField(registrationData);
+        registrationFormModal.checkPasswordFields(registrationData);
+        registrationFormModal.clickOnRegisterBtn();
+        personalArea.clickOnLogOut();
+        headerMenu.clickOnSignInBtn();
+        loginFormModal.logIn(registrationData);
+      })
+    })
+})})
