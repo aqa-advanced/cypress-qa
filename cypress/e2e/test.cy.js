@@ -20,7 +20,7 @@ describe('Check header and footer elements', () => {
   })
 
   describe('Check registration form -> positive test', () => {
-    it('', () => {
+    it('should successfully register a new user with valid details', () => {
       cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/')
       headerMenu.clickOnSignupBtn();
       const registrationData = getRegistrationData();
@@ -33,7 +33,7 @@ describe('Check header and footer elements', () => {
     })
 
     describe('Registration form -> check validation errors', () => {
-      it('', () => {
+      it('should successfully register a new user and check validation errors', () => {
         cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/')
         headerMenu.clickOnSignupBtn();
         registrationFormModal.checkRegistrationBtnIsDisabled();
