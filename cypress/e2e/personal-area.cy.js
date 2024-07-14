@@ -13,11 +13,11 @@ describe('Add car and fuel expense', () => {
         registrationFormModal.clickOnRegisterBtn();
     });
 
-    it('add a new car', () => {
+    it('checking for adding a new car', () => {
         garagePage.addCar('BMW','X5', '100');
         garagePage.removeCar();
     })
-    it('add a fuel expense', () => {
+    it('checking for adding a fuel expense', () => {
         garagePage.addCar('Ford','Focus', '500');
         garagePage.addFuelExpense('100','100');
         fuelExpensesPage.editFuelExpenses('600');
