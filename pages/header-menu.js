@@ -7,6 +7,7 @@ class HeaderMenu {
         guestLoginBtn: () => cy.get('.-guest'),
         signInBtn: () => cy.get('.header_signin'),
         signUpBtn: () => cy.get('.hero-descriptor_btn'),
+        myProfileBtn: () => cy.get('#userNavDropdown'),
     };
 
     getHeaderLogoElement(){
@@ -37,6 +38,10 @@ class HeaderMenu {
 
     clickOnSignInBtn(){
         this.elements.signInBtn().click();
+    }
+
+    isLoginSuccess(){
+        this.elements.myProfileBtn().should('be.visible');
     }
 }
 

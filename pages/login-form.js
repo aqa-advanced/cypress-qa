@@ -7,9 +7,9 @@ class LoginFormModal {
         loginBtn: () => cy.get('.modal-footer .btn-primary'),
     };
 
-    logIn(registrationData){
-        this.elements.emailField().type(registrationData.email);
-        this.elements.passwordField().type(registrationData.password);
+    logInAsExistCustomer(){
+        this.elements.emailField().type(Cypress.env('login'));
+        this.elements.passwordField().type(Cypress.env('password'));
         this.elements.rememberCheckbox().click();
         this.elements.loginBtn().click();
     }

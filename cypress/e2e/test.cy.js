@@ -29,7 +29,7 @@ describe('Check header and footer elements', () => {
       personalArea.profileBtnIsVisible();
       personalArea.clickOnLogOut();
       headerMenu.clickOnSignInBtn();
-      loginFormModal.logIn(registrationData);
+      loginFormModal.logInAsExistCustomer(registrationData);
     })
 
     describe('Registration form -> check validation errors', () => {
@@ -45,7 +45,16 @@ describe('Check header and footer elements', () => {
         registrationFormModal.clickOnRegisterBtn();
         personalArea.clickOnLogOut();
         headerMenu.clickOnSignInBtn();
-        loginFormModal.logIn(registrationData);
+        loginFormModal.logInAsExistCustomer(registrationData);
+      })
+    })
+
+    describe('Log in as exist customer', () => {
+      it('add a new car', () => {
+        cy.visit('/');
+        headerMenu.clickOnSignInBtn();
+        loginFormModal.logInAsExistCustomer();
+        headerMenu.isLoginSuccess();
       })
     })
 })})
