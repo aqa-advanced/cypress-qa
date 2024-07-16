@@ -68,6 +68,7 @@ describe('Garage Page', () => {
                 expect(response.body).to.have.property('userId', newPost.userId);
                 expect(response.body).to.have.property('id');
             });
+        });
 
         it('update post by id', () => {
             const updatedPost = {
@@ -83,18 +84,24 @@ describe('Garage Page', () => {
             }).then((response) => {
                 expect(response.status).to.eq(200);
                 expect(response.body).to.deep.equal(updatedPost);
+            });
         });
 
         it('delete post by id', () => {
             cy.request({
                 method: 'DELETE',
-                url: `${baseUrl}/posts/1`
+                url: `${baseUrl}/posts/10`
             }).then((response) => {
                 expect(response.status).to.eq(200);
-            console.log(response)
             });
-        });
-    });
+            const nonExistentPostId = 9999;
+            cy.request({
+                method: 'DELETE',
+                url: `${baseUrl}/posts/${nonExistentPostId}`,
+                failOnStatusCode: false
+            }).then((response) => {
+                expect([200, 404]).to.include(response.status);
+            });
         });
     });
 });
